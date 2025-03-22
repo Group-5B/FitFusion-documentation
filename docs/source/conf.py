@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'FitFusion'
+copyright = '2025, Group 5B'
+author = 'Group 5B'
 
 release = '0.1'
 version = '0.1.0'
