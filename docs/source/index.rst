@@ -8,14 +8,14 @@ Welcome to the FitFusion App Documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   Installation
-   Usage
-   Architecture
-   Implementation
-   API/Endpoints
-   Development
-   FAQs
-   Changelog
+   installation
+   usage
+   architecture
+   implementation
+   api/endpoints
+   development
+   faq
+   changelog
 
 Overview
 --------
