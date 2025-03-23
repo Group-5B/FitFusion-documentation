@@ -32,6 +32,7 @@ Key Features
 Target Audience
 ---------------
 This documentation is intended for:
+
 - **Users**: Who want to understand how to use the app effectively.
 - **Developers**: Who want to contribute or modify the app.
 - **Administrators**: Who need to manage and monitor the platform.
