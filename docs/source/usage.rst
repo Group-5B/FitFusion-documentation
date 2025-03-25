@@ -8,6 +8,7 @@ Getting Started
 
 1. **Create an Account**  
    To get started, open the FitFusion app and create an account by following these steps:
+
    - Tap **Sign Up** on the welcome screen.
    - Enter your basic information: name, email, and password. You must use a University of Portsmouth email (upXXXXXXX@myport/port.ac.uk), otherwise you'll get an error.
    - Confirm the password below.
@@ -18,6 +19,7 @@ Getting Started
 
 3. **Set Up Your Profile**  
    Once logged in, you can set up your profile:
+
    - Add a profile picture and details about your fitness preferences.
    - Specify your time availability, gender, age, fitness level, and preferred activity types (e.g., running, gym, yoga).
    - Set your privacy preferences to control who can see your profile and match with you.
@@ -32,6 +34,7 @@ Using the Matchmaking System
 
 2. **Start a Conversation**  
    Once you've matched with someone, you can send a message to start a conversation:
+
    - Tap the **Message** button on the match’s profile to open the chat window.
    - Send text, emojis, and fitness-related media to introduce yourself or plan a workout.
 
@@ -43,12 +46,15 @@ Managing Your Settings
 ----------------------
 
 1. **Privacy Settings**  
+
    - Enable or disable notifications based on your preferences.
 
 2. **Account Settings**  
+
    - You can update your account information, password, and connected social media accounts in the **Settings** menu.
 
-3. **Deleting Your Account**  
+3. **Deleting Your Account**
+  
    - To delete your account, go to **Settings** > **Account** > **Delete Account**. Please note that this action is irreversible and will remove all your data from the platform.
 
 Troubleshooting
