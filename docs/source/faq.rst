@@ -6,7 +6,7 @@ FAQs
 +===========================================================+===============================================================================================================+
 | How do I edit my preferences?                             | Go to your profile page and you can edit your preferences here                                                |
 +-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| Why am I not getting matches?                             | You might need to edit your preferences to make your range of matches larger                                  |
+| Why am I not getting many matches?                        | You might need to edit your preferences to make your range of matches larger                                  |
 +-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
 | How does matchmaking work?                                | Our app shows you matches based on your preferences and then you can choose whether to match with them or not |
 +-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
@@ -20,6 +20,9 @@ FAQs
 +-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
 | Who can use the app?                                      | The app is designed for students and so all users must complete verification to ensure it stays this way      |
 +-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+| What happens if I can't access my account?                | You can contact support and they'll try to help you gain access to your account again                         |
++-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+
 
 
 
