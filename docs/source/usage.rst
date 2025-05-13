@@ -42,6 +42,10 @@ Using the Matchmaking System
    - You'll receive notifications for new matches, messages, and workout invitations in real time.
    - Tap on the notification to be redirected to the specific chat or match.
 
+4. **Add or browse events**
+   - In the events page, click the "+" button to create an event with all the appropriate details
+   - Use the search box to find a specific event based on its name.
+
 Managing Your Settings
 ----------------------
 
@@ -49,19 +53,12 @@ Managing Your Settings
 
    - Enable or disable notifications based on your preferences.
 
-2. **Account Settings**  
-
-   - You can update your account information, password, and connected social media accounts in the **Settings** menu.
-
-3. **Deleting Your Account**
+2. **Deleting Your Account**
   
    - To delete your account, go to **Settings** > **Account** > **Delete Account**. Please note that this action is irreversible and will remove all your data from the platform.
 
 Troubleshooting
 ---------------
-
-- **Forgot Your Password?**  
-   If you've forgotten your password, tap the **Forgot Password?** link on the login screen and follow the instructions to reset it via email.
 
 - **Can't Log In?**  
    Make sure you have entered the correct credentials. If you are still having issues, try resetting your password or contact support.

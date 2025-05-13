@@ -8,14 +8,12 @@ Welcome to the FitFusion App Documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   installation
    usage
    architecture
    implementation
    api/endpoints
    development
    faq
-   changelog
 
 Overview
 --------
@@ -43,12 +41,9 @@ The app focuses on providing a seamless matchmaking experience based on fitness 
 
 Getting Started
 ---------------
-- To install and set up the app, refer to :doc:`installation`
 - For user instructions, see :doc:`usage`
 - For technical details, see :doc:`architecture`
 - For API documentation, visit :doc:`api/endpoints`
-
-For additional information, check the :doc:`faq` or :doc:`changelog` for recent updates.
 
 We hope this documentation helps you get the most out of the Matchmaking App!
 
