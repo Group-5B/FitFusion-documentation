@@ -1,6 +1,8 @@
 Implementation
 ==============
 
+This are the details of technologies and resources used to implement and ensure functionalities on the app.
+
 Overview
 --------
 - The Matchmaking App is developed using **Flutter** for cross-platform compatibility.  
