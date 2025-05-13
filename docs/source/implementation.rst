@@ -1,86 +1,106 @@
 Implementation
 ==============
 
-This are the details of technologies and resources used to implement and ensure functionalities on the app.
+This section provides an overview of the implementation of the FitFusion app, detailing how each core functionality is realized using Flutter and Firebase.  
 
-Overview
---------
-- The Matchmaking App is developed using **Flutter** for cross-platform compatibility.  
-- Backend services are managed using **Firebase**, including Authentication, Firestore, and Storage.  
-- The app supports Web, iOS, and Android, with notifications handled through Firebase Cloud Messaging.  
-- Location services are provided by the Geolocator package.  
+System Overview
+---------------
 
-Backend Structure
------------------
-- **Firebase Authentication:**  
-  - Implements email and password-based authentication.  
-  - Handles error cases for invalid email formats and weak passwords.  
-  - Manages persistent session states and user monitoring.  
+The implementation of FitFusion leverages Firebase services for authentication, data storage, and notifications. Flutter is used for UI development across Web, iOS, and Android platforms. The app follows a modular structure with distinct managers handling specific functionalities:  
 
-- **Firestore Database Structure:**  
-  - `users` collection: Stores profile data and preferences.  
-  - `matches` collection: Tracks matchmaking connections.  
-  - `chats` collection: Manages one-to-one and group chat data.  
-  - `events` collection: Manages user-created events.  
+- **Authentication and Registration**  
+- **Profile Management**  
+- **Preferences and Location**  
+- **Matchmaking**  
+- **Chat Management**  
+- **Settings and Notifications**  
+- **Event Management**  
+- **Account Management**  
 
-- **Firebase Storage:**  
-  - Stores user profile pictures and chat media.  
-  - Access control is managed through authentication tokens.  
-
-Registration and Authentication
--------------------------------
-- User registration is handled by Firebase Authentication with email verification and password encryption.  
-- Validation functions are implemented for email domain and password strength.  
-- Login logic checks credentials against Firebase Authentication and establishes user sessions.  
-- Logout functionality clears user session data and redirects to the login screen.  
-
-Profile Management
-------------------
-- User profiles are fetched and displayed using `StreamBuilder` from Firestore.  
-- Profile updates are written to the `users` collection under specific user IDs.  
-- Image selection for profile pictures is managed using the `image_picker` package.  
-- Images are stored under `profile_pictures/{userId}.jpg` in Firebase Storage, with download URLs for access.  
-
-Preferences and Location
+Component Implementation
 ------------------------
-- User preferences are managed under the `preferences` subcollection within each user document.  
-- Matchmaking logic compares preferences using Firestore queries.  
-- Geolocator fetches the user’s location and updates the `location` field in Firestore.  
-- Distance calculations use the Haversine formula to determine proximity.  
 
-Matchmaking Logic
------------------
-- Initial matchmaking retrieves user profiles based on preferences and location radius.  
-- The `getMatchingUsers` function listens for Firestore updates using `Stream<QuerySnapshot>`.  
-- Preference updates trigger new queries, adjusting the pool of potential matches.  
-- Match requests are stored as subdocuments in the `matches` collection with `request_status` fields (`pending`, `accepted`, `rejected`).  
+1. Authentication and Registration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Handles user authentication, registration, and session management:  
+- **Register User**: Creates a new user account using `FirebaseAuth.createUserWithEmailAndPassword`.  
+- **Login**: Verifies user credentials and initiates a session using `FirebaseAuth.signInWithEmailAndPassword`.  
+- **Logout**: Ends the current session using `FirebaseAuth.signOut()`.  
+- **Password Validation**: Ensures passwords meet complexity requirements.  
+- **Account Deletion**: Deletes the user account and associated data from Firestore and Storage.  
 
-Chat Implementation
--------------------
-- Chat rooms are created as new documents in the `chats` collection, identified by unique chat IDs.  
-- Group chats include multiple user IDs in the `participants` field.  
-- Real-time messaging is enabled through Firestore listeners on the `messages` subcollection.  
-- Media messages are uploaded to Firebase Storage, with download URLs saved in the chat document.  
+2. Profile Management
+~~~~~~~~~~~~~~~~~~~~~~
+Manages user profile data and updates:  
+- **Edit Profile**: Allows users to update their information stored in the `users` collection.  
+- **Upload Profile Picture**: Uses `image_picker` for image selection and Firebase Storage for uploading.  
+- **Retrieve Profile Data**: Fetches profile data using Firestore queries.  
+- **Update Preferences**: Updates user preferences in the `preferences` subcollection.  
 
-Settings and Notifications
---------------------------
-- User settings for font size, dark mode, and notification preferences are stored as fields in the user’s Firestore document.  
-- Push notifications are managed using Firebase Cloud Messaging, with device tokens stored in Firestore under `users/{userId}/tokens`.  
+3. Preferences and Location
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Handles user preferences and location data:  
+- **Set Preferences**: Updates activity, level, availability, and gender preferences.  
+- **Update Location**: Uses Geolocator to fetch coordinates and updates the `location` field in Firestore.  
+- **Distance Calculation**: Determines proximity between users using the Haversine formula.  
 
-Events Implementation
----------------------
-- Events are stored in the `events` collection, containing metadata such as activity type, date, and location.  
-- Search functionality queries events based on activity type and user location proximity.  
+4. Matchmaking
+~~~~~~~~~~~~~~~
+Implements the core matchmaking logic:  
+- **Generate Matches**: Queries potential matches based on preferences and location.  
+- **Update Preferences and Radius**: Adjusts the pool of matches by updating the search criteria.  
+- **Send Match Request**: Creates a match request in the `matches` collection with status `pending`.  
+- **Accept/Reject Request**: Updates the `request_status` field to `accepted` or `rejected`.  
+- **Match Reset**: Deletes all match requests for the user.  
 
-Account Management
-------------------
-- Match resets are executed by deleting all `matches` subdocuments under the user’s document.  
-- Account deletion removes user data from Authentication, Firestore, and Storage using batch operations.  
+5. Chat Management
+~~~~~~~~~~~~~~~~~~~
+Handles messaging and group chat functionality:  
+- **Create Chat Room**: Initializes a chat room document under the `chats` collection.  
+- **Send Message**: Sends messages with timestamp and sender ID.  
+- **Receive Messages**: Streams incoming messages using Firestore listeners.  
+- **Media Sharing**: Uploads media files to Firebase Storage and stores download URLs in Firestore.  
+- **Group Chat**: Allows multiple participants to join a single chat room.  
+- **Delete Chat**: Removes chat data from Firestore.  
+
+6. Settings and Notifications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Manages user settings and push notifications:  
+- **Update Font Size and Theme**: Stores preferences in Firestore.  
+- **Enable/Disable Notifications**: Updates notification settings based on user input.  
+- **Send Notifications**: Sends notifications via Firebase Cloud Messaging, targeting specific device tokens.  
+- **Receive Notifications**: Handles incoming notifications to display alerts and update the UI.  
+
+7. Event Management
+~~~~~~~~~~~~~~~~~~~~
+Implements event creation, search, and management:  
+- **Create Event**: Allows users to set up fitness-related events in the `events` collection.  
+- **Edit Event**: Modifies existing event data.  
+- **Search Events**: Queries events based on activity type and location.  
+- **Delete Event**: Removes event data from Firestore.  
+
+8. Account Management
+~~~~~~~~~~~~~~~~~~~~~~
+Handles account-level operations:  
+- **Reset Matches**: Clears all match requests and history.  
+- **Delete Account**: Executes a batch operation to remove user data from Authentication, Firestore, and Storage.  
+- **Sign Out**: Clears user session and redirects to the login screen.  
+
+Data Flow
+---------
+
+The data flow across the app follows a structured process:  
+1. **User Action** → User performs an action (e.g., update profile, send a message).  
+2. **Data Processing** → The relevant manager processes the request and updates Firestore or Storage.  
+3. **Data Synchronization** → Firestore listeners update the UI with the latest data in real time.  
+4. **Notification Dispatch** → Firebase Cloud Messaging sends alerts based on user actions (e.g., new match, new message).  
 
 Dependencies
 ------------
-- **Firebase:** Authentication, Firestore, Storage, Cloud Messaging.  
-- **Geolocator:** Handles location services and distance calculations.  
-- **Image Picker:** Manages profile picture selection.  
-- **Provider:** Manages state for user data and app settings.  
-- **Flutter Material:** Implements the UI using Material Design components.  
+
+The FitFusion app relies on several key dependencies:  
+- **Firebase**: Authentication, Firestore, Storage, Cloud Messaging.  
+- **Geolocator**: Provides location data for proximity-based matchmaking.  
+- **Image Picker**: Handles image selection for profile pictures and media sharing.  
+- **Provider**: Manages state and data flow across the app.  
+- **Flutter Material**: Implements the user interface using Material Design components.  
